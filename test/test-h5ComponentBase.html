@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width"/>
+		<title>用于测试基本的图文组件</title>
+		<script src="../js/lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/h5ComponentBase.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../css/h5ComponetBase.css"/>
+		<style type="text/css">
+			body{
+				margin: 0;
+				padding: 0;
+				background-color: #000;
+				font-size: 12px;
+			}
+			.iphone{
+				width: 340px;
+				height: 540px;
+				background-color: #fff;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left:-170px;
+				margin-top: -270px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="iphone h5_page"></div>
+	</body>
+	<script type="text/javascript">
+			var cfg = {
+				type:"base",
+				width:516,
+				height:304,
+				css:{
+					"backgroundImage":"url(../img/people.png)",
+					"top":"100px"
+				},
+				animateIn:{bottom:"80px",opacity:1},
+				animateOut:{bottom:0,opacity:0},
+				hCenter:true,
+				vCenter:false
+			}
+			var h5 = new H5Componentbase("info",cfg);
+			$(".iphone").append(h5);
+			//动画测试
+			/*var isLeave = true;
+			$(document.body).click(function(){
+				isLeave = !isLeave;
+				if(isLeave){
+					h5.trigger("onLeave");
+				}else{
+					h5.trigger("onLoad");
+				}
+				
+			})*/
+	</script>
+</html>

@@ -1,0 +1,32 @@
+/*柱状图文样式*/
+.h5_Component_bar{
+	position: absolute;
+}
+.h5_Component_bar .bar{
+	position: relative;
+	height: 16px;
+	margin-bottom: 18px;
+	width: 100%;
+	overflow: hidden;
+}
+.h5_Component_bar  .bar_name,.h5_Component_bar  .bar_pro,.h5_Component_bar  .bar_per{
+	height: 100%;
+	float: left;
+}
+.h5_Component_bar  .bar_per{
+	transition: all 0.5s 0.8s;
+}
+.h5_Component_bar  .bar_proBg{
+	height: 100%;
+	border-radius:4px;
+	transition: all 0.8s;
+}
+.h5_Component_bar  .bar_name{
+	text-align: center;
+	font-size: 9px;
+}
+.h5_Component_bar  .bar_per{
+	font-size: 9px;
+	text-align: center;
+	
+}

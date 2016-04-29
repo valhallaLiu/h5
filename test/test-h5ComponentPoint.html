@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width"/>
+		<title>用于测试散点图</title>
+		<script src="../js/lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/h5ComponentBase.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/h5ComponentPoint.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../css/h5ComponetPonit.css"/>
+		<style type="text/css">
+			body{
+				margin: 0;
+				padding: 0;
+				background-color: #000;
+				font-size: 12px;
+			}
+			.iphone{
+				width: 340px;
+				height: 540px;
+				background-color: #fff;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left:-170px;
+				margin-top: -270px;
+				transform: translate()
+			}
+		</style>
+	</head>
+	<body>
+		<div class="iphone h5_page"></div>
+	</body>
+	<script type="text/javascript">
+			var cfg = {
+				type:"point",
+				width:300,
+				height:300,
+				data:[
+					["A项目",.4,"green"],
+					["B项目",.25,"yellow","19%","19%"],
+					["C项目",.2,"red","23%","21%"]
+				],
+				css:{
+					"top":"200px"
+				},
+				animateIn:[
+					{"transform": "translate(-40px,-140px)"},
+					{"transform": "translate(0,170px)"}
+				],
+				animateOut:[
+					{"transform": "translate(0,0)"},
+					{"transform": "translate(0,0)"}
+				],
+				hCenter:true,
+				vCenter:false
+			}
+			var ponit1 = new H5ComponentPoint("ponit",cfg);
+			$(".iphone").append(ponit1);
+			//动画测试
+			var isLeave = true;
+			$(document.body).click(function(){
+				isLeave = !isLeave;
+				if(isLeave){
+					ponit1.trigger("onLeave");
+				}else{
+					ponit1.trigger("onLoad");
+				}
+			})
+	</script>
+</html>

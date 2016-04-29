@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width"/>
+		<title>用于测试柱状图</title>
+		<link rel="stylesheet" type="text/css" href="../css/h5.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/h5ComponetBase.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/h5ComponetBar.css"/>
+		<script src="../js/lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/h5ComponentBase.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/h5ComponentBar.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../css/h5ComponetPonit.css"/>
+		<style type="text/css">
+			body{
+				margin: 0;
+				padding: 0;
+				background-color: #000;
+				font-size: 12px;
+			}
+			.iphone{
+				width: 340px;
+				height: 540px;
+				background-color: #fff;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin-left:-170px;
+				margin-top: -270px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="iphone h5_page"></div>
+	</body>
+	<script type="text/javascript">
+			var cfg = {
+				type:"bar",
+				width:534,
+				height:592,
+				nameWidth:134, //前缀宽度
+				perWidht:70,	//百分比宽度
+				data:[
+					["Javscript",.70,"#ff7676"],
+					["HTML/CSS",.70],
+					["CSS3",.2],
+					["HTML5",.2],
+					["jQuery",.50],
+					["Bootstrap",.13],
+					["AngularJs",.12]
+				],
+				css:{
+					"top":"200px"
+				},
+				animateIn:{
+					name:{"opacity":1},
+					proBg:{"width":"100%","opacity":1},
+					per:{"opacity":1}
+				},
+				animateOut:{
+					name:{"opacity":0},
+					proBg:{"width":0,"opacity":0},
+					per:{"opacity":0}
+				},
+				hCenter:true,
+				vCenter:false
+			}
+			var bar1 = new H5ComponentBar("tech",cfg);
+			$(".iphone").append(bar1);
+			//动画测试
+			var isLeave = true;
+			$(document.body).click(function(){
+				isLeave = !isLeave;
+				if(isLeave){
+					bar1.trigger("onLeave");
+				}else{
+					bar1.trigger("onLoad");
+				}
+			})
+	</script>
+</html>

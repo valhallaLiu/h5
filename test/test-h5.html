@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<title>h5内容组织类</title>
+		<link rel="stylesheet" type="text/css" href="../css/h5.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/h5ComponetBase.css"/>
+		<script src="../js/lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/lib/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/lib/jquery.fullPage.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/h5ComponentBase.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/h5.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+			transition: all 0.5s linear;
+		}
+	</style>
+	<body>
+		
+	</body>
+	<!--用于测试页面的加载，和页面组件的加载-->
+	<script type="text/javascript">
+			var cfg = {
+				type:"base",
+				width:516,
+				height:304,
+				css:{
+					"backgroundImage":"url(../img/people.png)",
+					"bottom":0,
+					"opacity":0
+				},
+				animateIn:{bottom:"80px",opacity:1},
+				animateOut:{bottom:0,opacity:0},
+				hCenter:true,
+				vCenter:false
+			}
+			var cfg2 = {
+				type:"base",
+				width:516,
+				height:304,
+				css:{
+					"backgroundColor":"silver",
+					"bottom":0
+				},
+				hCenter:true,
+				vCenter:false,
+				relativeTo:{
+					name:"info",
+					x:50,
+					y:-200
+				}
+			}
+		var h5 = new H5();
+		h5
+		  .addPage({name:"face",text:"首页"})
+		  .addPage({name:"page_2",text:"课程分部方向"})
+		  	.addComponent("info",cfg)
+		  	.addComponent("go",cfg2)
+		  .addPage({name:"page_3",text:"核心理念"})
+		  .loader();
+	</script>
+	
+</html>

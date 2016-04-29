@@ -1,0 +1,7 @@
+.h5_Component_line{
+	position: absolute;
+}
+.h5_Component_line canvas{
+	width:260px;
+	height: 157px;
+}

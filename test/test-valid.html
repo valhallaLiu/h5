@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width"/>
+		<title>用于验证整页切换、以及切换页面后组件事件的有效性</title>
+		<script src="../js/lib/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/lib/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/lib/jquery.fullPage.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#h5").fullpage({
+					"sectionsColor":['#254875',"#00ff00","#254587","#695684"],
+					onLeave:function(index,nextIndex,direction){
+						$("#h5").find(".page").eq(index-1).trigger("onLeave");
+						//页面离开时，所有组件执行onleave
+						$(this).find(".component").trigger("onLeave")
+					},
+					afterLoad:function(anchorLink,index){
+						$("#h5").find(".page").eq(index-1).trigger("afterLoad");
+						$(this).find(".component").trigger("onLoad");
+					}
+				});
+				//定义一个自定义事件onLeave
+				$(".page").on("onLeave",function(){
+					console.log($(this).attr("id"),"==>>","onLeave");
+					
+				});
+				$(".page").on("afterLoad",function(){
+					console.log($(this).attr("id"),"==>>","afterLoad");
+				})
+				$(".component").on("onLoad",function(){
+					$(this).fadeIn();
+					return false;
+				})
+				$(".component").on("onLeave",function(){
+					$(this).fadeOut();
+					return false;
+				})
+				
+			});
+		</script>
+		<style type="text/css">
+			body{
+				margin: 0;
+				padding: 0;
+			}
+			.component{
+				width: 50%;
+				height: 50%;
+				margin-bottom: 20px;
+				background-color: #eee;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<!--用于验证fullPage.js切换页面，以及组织内容何用，组件能够进行动画-->
+		<!--最终目的：滑动页面时，页面上的组件根据相应页面的载入(afterLoad)、移出(onLeave)发生相应的变化-->
+		<div id="h5">
+			<div class="page section" id="pgae-1">
+				<div class="component   log">logo</div>
+				<div class="component   slogan">slogan</div>
+			</div>
+			<div class="page section" id="pgae-2">
+				<div class="component  desc">描述信息</div>
+			</div>
+			<div class="page section" id="pgae-3">
+				<div class="component  bar">柱状图</div>
+			</div>
+		</div>
+	</body>
+</html>
